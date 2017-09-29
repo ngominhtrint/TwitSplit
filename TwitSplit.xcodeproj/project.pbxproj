@@ -18,6 +18,7 @@
 		EB023B6B1F7B9F75008188F6 /* TwitSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B6A1F7B9F75008188F6 /* TwitSplitTests.swift */; };
 		EB023B761F7B9F75008188F6 /* TwitSplitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B751F7B9F75008188F6 /* TwitSplitUITests.swift */; };
 		EB023B871F7BA22D008188F6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B861F7BA22D008188F6 /* Utils.swift */; };
+		EB9678FF1F7E1B3000F1C3A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		EB023B751F7B9F75008188F6 /* TwitSplitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitSplitUITests.swift; sourceTree = "<group>"; };
 		EB023B771F7B9F75008188F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB023B861F7BA22D008188F6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 			children = (
 				EB023B6A1F7B9F75008188F6 /* TwitSplitTests.swift */,
 				EB023B6C1F7B9F75008188F6 /* Info.plist */,
+				EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */,
 			);
 			path = TwitSplitTests;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB023B601F7B9F75008188F6 /* LaunchScreen.storyboard in Resources */,
+				EB9678FF1F7E1B3000F1C3A6 /* GoogleService-Info.plist in Resources */,
 				EB023B5D1F7B9F75008188F6 /* Assets.xcassets in Resources */,
 				EB023B5B1F7B9F75008188F6 /* Main.storyboard in Resources */,
 			);
@@ -726,6 +730,7 @@
 				EB023B7C1F7B9F75008188F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB023B7D1F7B9F75008188F6 /* Build configuration list for PBXNativeTarget "TwitSplitTests" */ = {
 			isa = XCConfigurationList;
@@ -734,6 +739,7 @@
 				EB023B7F1F7B9F75008188F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB023B801F7B9F75008188F6 /* Build configuration list for PBXNativeTarget "TwitSplitUITests" */ = {
 			isa = XCConfigurationList;
@@ -742,6 +748,7 @@
 				EB023B821F7B9F75008188F6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

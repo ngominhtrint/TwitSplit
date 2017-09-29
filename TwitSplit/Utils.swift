@@ -19,9 +19,9 @@ class Utils {
             return [message]
         }
         var messageArray = [String]()
-        let messageChanks = message.match(for: "(\\b.{1,45}(\\s|$))\\s*")
-        if messageChanks.count > 1 {
-            for (index, string) in messageChanks.enumerated() {
+        let messageRegexes = message.match(for: "(\\b.{1,45}(\\s|$))\\s*")
+        if messageRegexes.count > 1 {
+            for (index, string) in messageRegexes.enumerated() {
                 if string.characters.count > 50 {
                     hasError = true
                 }
@@ -29,7 +29,7 @@ class Utils {
                 if hasError {
                     return error
                 } else {
-                    messageArray.append("\(index + 1)/\(messageChanks.count) \(string.trimmingCharacters(in: .whitespacesAndNewlines))")
+                    messageArray.append("\(index + 1)/\(messageRegexes.count) \(string.trimmingCharacters(in: .whitespacesAndNewlines))")
                 }
             }
         } else {

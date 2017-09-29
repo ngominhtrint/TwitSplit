@@ -6,6 +6,7 @@ target 'TwitSplit' do
   use_frameworks!
 
   # Pods for TwitSplit
+  pod 'Firebase/Core'
 
   target 'TwitSplitTests' do
     inherit! :search_paths
