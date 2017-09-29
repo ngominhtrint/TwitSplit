@@ -33,4 +33,42 @@ class TwitSplitTests: XCTestCase {
         }
     }
     
+    func testInputStringIsNil() {
+        XCTAssertNotNil(Utils.split(message: ""))
+    }
+    
+    func testReturnEmptyArrayWhileInputStringIsNil() {
+        XCTAssertEqual(Utils.split(message: ""), [""])
+    }
+    
+    func testCharactersLessThan50() {
+        XCTAssertEqual(Utils.split(message: "I can't believe Tweeter now supports chunking").count, 1)
+    }
+    
+    func testCharactersGreaterThan50() {
+        XCTAssertEqual(Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself").count, 2)
+    }
+    
+    func testCharactersGreaterThan150() {
+        XCTAssertEqual(Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself").count, 4)
+    }
+    
+    func testLimitCharactersForEachPart() {
+        if let firstPart = Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do").first {
+            XCTAssert(firstPart.characters.count <= 50)
+        }
+    }
+    
+    func testFirstPartSuffix() {
+        if let firstPart = Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do").first {
+            XCTAssert(firstPart.contains("1/2 "))
+        }
+    }
+    
+    func testSecondPartSuffix() {
+        if Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do").count > 1 {
+            let secondPart = Utils.split(message: "I can't believe Tweeter now supports chunking my messages, so I don't have to do")[1]
+            XCTAssert(secondPart.contains("2/2 "))
+        }
+    }
 }
