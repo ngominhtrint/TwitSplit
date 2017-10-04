@@ -15,9 +15,9 @@
 		EB023B5B1F7B9F75008188F6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB023B591F7B9F75008188F6 /* Main.storyboard */; };
 		EB023B5D1F7B9F75008188F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB023B5C1F7B9F75008188F6 /* Assets.xcassets */; };
 		EB023B601F7B9F75008188F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB023B5E1F7B9F75008188F6 /* LaunchScreen.storyboard */; };
-		EB023B6B1F7B9F75008188F6 /* TwitSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B6A1F7B9F75008188F6 /* TwitSplitTests.swift */; };
 		EB023B761F7B9F75008188F6 /* TwitSplitUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B751F7B9F75008188F6 /* TwitSplitUITests.swift */; };
 		EB023B871F7BA22D008188F6 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB023B861F7BA22D008188F6 /* Utils.swift */; };
+		EB0349CE1F8492F600B3E3B6 /* MessageSplitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0349CD1F8492F600B3E3B6 /* MessageSplitTests.swift */; };
 		EB9678FF1F7E1B3000F1C3A6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */; };
 		EB9679021F7E1EE900F1C3A6 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9679011F7E1EE900F1C3A6 /* NewPostViewController.swift */; };
 		EB9679051F7E224700F1C3A6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9679031F7E224700F1C3A6 /* HomeCell.swift */; };
@@ -60,12 +60,12 @@
 		EB023B5F1F7B9F75008188F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB023B611F7B9F75008188F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB023B661F7B9F75008188F6 /* TwitSplitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitSplitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB023B6A1F7B9F75008188F6 /* TwitSplitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitSplitTests.swift; sourceTree = "<group>"; };
 		EB023B6C1F7B9F75008188F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB023B711F7B9F75008188F6 /* TwitSplitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TwitSplitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB023B751F7B9F75008188F6 /* TwitSplitUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitSplitUITests.swift; sourceTree = "<group>"; };
 		EB023B771F7B9F75008188F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB023B861F7BA22D008188F6 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		EB0349CD1F8492F600B3E3B6 /* MessageSplitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSplitTests.swift; sourceTree = "<group>"; };
 		EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB9679011F7E1EE900F1C3A6 /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		EB9679031F7E224700F1C3A6 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeCell.swift; path = TwitSplit/ViewControllers/HomeCell.swift; sourceTree = SOURCE_ROOT; };
@@ -166,7 +166,7 @@
 			children = (
 				EB9678FE1F7E1B3000F1C3A6 /* GoogleService-Info.plist */,
 				EB023B6C1F7B9F75008188F6 /* Info.plist */,
-				EB023B6A1F7B9F75008188F6 /* TwitSplitTests.swift */,
+				EB0349CD1F8492F600B3E3B6 /* MessageSplitTests.swift */,
 			);
 			path = TwitSplitTests;
 			sourceTree = "<group>";
@@ -519,7 +519,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB023B6B1F7B9F75008188F6 /* TwitSplitTests.swift in Sources */,
+				EB0349CE1F8492F600B3E3B6 /* MessageSplitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,7 +6,6 @@ target 'TwitSplit' do
   use_frameworks!
 
   # Pods for TwitSplit
-  pod 'Firebase/Core'
   pod 'RxSwift'
   pod 'RxCocoa'
 
