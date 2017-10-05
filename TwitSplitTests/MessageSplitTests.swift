@@ -57,6 +57,20 @@ class MessageSplitTests: XCTestCase {
         XCTAssertEqual(output, expected)
     }
     
+    func testCharatersIndexAt50() {
+        //Give
+        let input = "I can't believe Tweeter now supports SwiftSwiftSwiftSwiftSwiftSwift my messages, so I don't have to do it myself."
+        let expected = ["1/3 I can't believe Tweeter now supports",
+                        "2/3 SwiftSwiftSwiftSwiftSwiftSwift my messages,",
+                        "3/3 so I don't have to do it myself."]
+        
+        //When
+        let output = Utils.split(input, limitCharacters: 50)
+        
+        //Then
+        XCTAssertEqual(output, expected)
+    }
+    
     func testOverThanTenParts() {
         //Give
         let input = "I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunking my messages, so I don't have to do it myself."
@@ -77,4 +91,24 @@ class MessageSplitTests: XCTestCase {
         //Then
         XCTAssertEqual(output, expected)
     }
+    
+    func testTotalPartIsGreaterThanEstimate() {
+        //Give
+        let input = "I can't believe Tweeter now supports chunkingchunking my messages, so I don't have to do it myself. I can't believe Tweeter now supports chunkingchunking my messages, so I don't have to do it myself."
+        let expected = ["1/5 I can't believe Tweeter now supports",
+                        "2/5 chunkingchunking my messages, so I don't have",
+                        "3/5 to do it myself. I can't believe Tweeter now",
+                        "4/5 supports chunkingchunking my messages, so I",
+                        "5/5 don't have to do it myself."]
+        
+        //When
+        let output = Utils.split(input, limitCharacters: 50)
+        
+        //Then
+        XCTAssertEqual(output, expected)
+    }
 }
+
+
+
+

@@ -10,6 +10,8 @@ import Foundation
 
 class Utils {
     
+    typealias ResultsAndBreakIndex = (results: [String], breakIndex: Int)
+    
     // Using regex but wrong approach
     static func split(message: String) -> [String] {
         
@@ -54,34 +56,55 @@ class Utils {
         }
         
         //Try to estimate total partial before separate
-        let estTotal: Int = (message.characters.count / limitCharacters) + (message.characters.count % limitCharacters > 0 ? 1 : 0)
+        var estTotal: Int = (message.characters.count / limitCharacters) + (message.characters.count % limitCharacters > 0 ? 1 : 0)
         
         //Separate sentences into words by remove whitespaces and new lines
-        var words = message.components(separatedBy: .whitespacesAndNewlines)
+        let words = message.components(separatedBy: .whitespacesAndNewlines)
         
+        let resultsAndBreakIndex = joinedPartial(words, estTotal: estTotal, limitCharacters: limitCharacters)
+        var results = resultsAndBreakIndex.results
+    
+        if resultsAndBreakIndex.breakIndex < words.count - 1 {
+            estTotal = estTotal + 1
+            results = joinedPartial(words, estTotal: estTotal, limitCharacters: limitCharacters).results
+        }
+
+        return results
+    }
+    
+    static func joinedPartial(_ words: [String], estTotal: Int, limitCharacters: Int) -> ResultsAndBreakIndex {
+        //Initial empty string array to store all partials as output
         var results = [String]()
         
-        for index in 0..<estTotal {
+        var breakAtIndex = 0
+        
+        for i in 0..<estTotal {
             //Add indicator as suffix
-            var partial = "\(index + 1)/\(estTotal) "
+            var partial = "\(i + 1)/\(estTotal) "
+            var length = partial.characters.count
             
-            for item in words {
-                //Joined words into sentence with less than limit characters condition
-                if partial.characters.count < limitCharacters {
-                    partial += item + " "
-                    
-                    //Remove words that already appended into partial
-                    words.remove(at: 0)
-                } else {
+            for (index, item) in words.enumerated() {
+                if index < breakAtIndex {
+                    continue
+                }
+                
+                // Caculate string length (+ 1 because of whitespace) before joined into partial
+                length += item.characters.count + 1
+                
+                // Break loop if length is over than limit
+                if length > limitCharacters {
+                    breakAtIndex = index
                     break
+                } else {
+                    partial += item + " "
                 }
             }
             
             //Append partial
             results.append(partial.trimmingCharacters(in: .whitespaces))
         }
-    
-        return results
+        
+        return (results, breakAtIndex)
     }
 }
 
