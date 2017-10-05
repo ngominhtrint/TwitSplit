@@ -71,6 +71,7 @@ class Utils {
         
         resultsAndBreakIndex = (results, breakAtIndex)
         
+        //Applied recursive to re-calculate total partials
         if breakAtIndex < words.count - 1 {
             let total = estTotal + 1
             resultsAndBreakIndex = joinedPartial(words, estTotal: total, limitCharacters: limitCharacters)
