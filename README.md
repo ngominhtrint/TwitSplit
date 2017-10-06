@@ -2,7 +2,7 @@
 Zalora pre-interview assignment
 
 ## Requirement
-If you're curious enough please take a look on [Tweet split problem](https://drive.google.com/file/d/0B-1eBVpxwL0ZLUJJTFNPRXJVQnM/view?usp=sharing)
+If you're curious enough please contact Zalora to know exactly the problem.
 
 ## System
 - iOS >= 10.3
@@ -50,7 +50,7 @@ Let take a look on failure cases to know why regexes is wrong approach. [Checkou
 
 ### Time complexity
 
-In general, the time complexity is `O(total * n) ~ O(n)`, within `n` is numbers of words.
+In general, the time complexity is `O(n)`, within `n` is numbers of words.
 
 ```
 // Go through 0 to total partial
