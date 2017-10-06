@@ -175,7 +175,32 @@ class MessageSplitTests: XCTestCase {
         let expected: [String] = []
         
         //When
-        let output = Utils.split(msgs, limitCharacters: 50)
+        let output = Utils.split(msgs, limitCharacters: limit)
+        
+        //Then
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testInputWithMultipleWhitespaceConsistence() {
+        //Give
+        let input = "this     is     a   \n\n\n  possible     input"
+        let expected = ["this is a possible input"]
+        
+        //When
+        let output = Utils.split(input, limitCharacters: limit)
+        
+        //Then
+        XCTAssertEqual(output, expected)
+    }
+    
+    func testInputWithMultipleWhitespaceConsistenceAndGreaterThan50() {
+        //Give
+        let input = "I can't     believe     Tweeter     now     supports     chunking     my     messages"
+        let expected = ["1/2 I can't believe Tweeter now supports chunking",
+                        "2/2 my messages"]
+        
+        //When
+        let output = Utils.split(input, limitCharacters: limit)
         
         //Then
         XCTAssertEqual(output, expected)

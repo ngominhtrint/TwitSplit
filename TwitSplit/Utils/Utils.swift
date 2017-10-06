@@ -10,63 +10,64 @@ import Foundation
 
 class Utils {
     
-    typealias ResultsAndBreakIndex = (results: [String], breakIndex: Int)
-    
-    static func split(_ message: String, limitCharacters: Int) -> [String] {
-        let error = "The message contains a span of non-whitespace characters longer than 50 characters"
+    static func split(_ input: String, limitCharacters: Int) -> [String] {
+        
+        //Initialize non-whitespace error message
+        let error = "The message contains a span of non-whitespace characters longer than \(limitCharacters) characters"
+        
+        //Condensed whitespace
+        let message = input.condensedWhitespace
+        
+        //Return message if the length is less than limit
+        guard message.count > limitCharacters else { return [message] }
         
         //Try to estimate total partial before separate
-        let estTotal: Int = (message.characters.count / limitCharacters) + (message.characters.count % limitCharacters > 0 ? 1 : 0)
+        let estTotal: Int = (message.count / limitCharacters) + (message.count % limitCharacters > 0 ? 1 : 0)
         
         //Separate sentences into words by remove whitespaces and new lines
         let words = message.components(separatedBy: .whitespacesAndNewlines)
         
-        let errorWords = words.filter { return $0.characters.count > limitCharacters }
-        
-        //Return message if the length is less than limit
-        guard message.characters.count > limitCharacters else { return [message] }
-        
+        //Each word length should greater than limit
+        let errorWords = words.filter { return $0.count > limitCharacters }
+
         //Return error if the length is great than limit and contains non-whitespace
-        if errorWords.count > 0 { return [error] }
+        guard errorWords.count <= 0 else { return [error] }
         
-        let resultsAndBreakIndex = joinedPartial(words, estTotal: estTotal, limitCharacters: limitCharacters)
-        let results = resultsAndBreakIndex.results
-        
-        return results
+        //Return tweets message
+        return joinedPartial(words, estTotal: estTotal, limitCharacters: limitCharacters)
     }
     
-    static func joinedPartial(_ words: [String], estTotal: Int, limitCharacters: Int) -> ResultsAndBreakIndex {
+    static func joinedPartial(_ words: [String], estTotal: Int, limitCharacters: Int) -> [String] {
+        
         //Initial empty string array to store all partials as output
         var results = [String]()
         var breakAtIndex = -1
         
-        var resultsAndBreakIndex = (results, breakAtIndex)
-        
         for i in 0..<estTotal {
-            //Add indicator as suffix
+            //Append indicator as prefix
             var partial = "\(i + 1)/\(estTotal) "
-            let indicatorLength = partial.characters.count
-            var length = partial.characters.count
+            let indicatorLength = partial.count
+            var length = partial.count
             
+            // Go through individual word
             for (index, item) in words.enumerated() {
                 
-                if item.characters.count + indicatorLength > 50 {
-                    return ([], index)
-                }
+                //Return empty array if the length of individual word include indicator greater than limit
+                guard item.count + indicatorLength <= limitCharacters else { return [] }
                 
                 // Skip words that already joined into partial
-                if index <= breakAtIndex { continue }
+                guard index > breakAtIndex else { continue }
                 
-                // Caculate string length (+ 1 because of whitespace) before joined into partial
-                length += item.characters.count + 1
+                // Pre-caculate how much partial length (+ 1 because of 1 suffix whitespace per word) before joined into partial
+                length += item.count + 1
                 
-                // Break loop if length is over than limit, (+ 1 because the last whitespace)
-                if length > limitCharacters + 1 {
-                    break
-                } else {
-                    partial += item + " "
-                }
+                // Break loop if length is over than limit, (+ 1 because the last whitespace before trimming)
+                guard length <= limitCharacters + 1 else { break }
                 
+                //Append individual word after prefix indicator
+                partial += item + " "
+                
+                //Store current index where the last word is appended
                 breakAtIndex = index
             }
             
@@ -74,14 +75,25 @@ class Utils {
             results.append(partial.trimmingCharacters(in: .whitespaces))
         }
         
-        resultsAndBreakIndex = (results, breakAtIndex)
-        
         //Applied recursive to re-calculate total partials
         if breakAtIndex < words.count - 1 {
             let total = estTotal + 1
-            resultsAndBreakIndex = joinedPartial(words, estTotal: total, limitCharacters: limitCharacters)
+            results = joinedPartial(words, estTotal: total, limitCharacters: limitCharacters)
         }
         
-        return resultsAndBreakIndex
+        return results
+    }
+}
+
+extension String {
+    
+    var condensedWhitespace: String {
+        let components = self.components(separatedBy: .whitespacesAndNewlines)
+        return components.filter { !$0.isEmpty }.joined(separator: " ")
+    }
+    
+    //Make characters count shorter
+    var count: Int {
+        return self.characters.count
     }
 }
