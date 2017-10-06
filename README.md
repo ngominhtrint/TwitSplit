@@ -50,7 +50,7 @@ Let take a look on failure cases to know why regexes is wrong approach.
   - Be not able to append last word into new partial.
   - Many anothers [cases](https://github.com/ngominhtrint/TwitSplit/blob/master/TwitSplitTests/MessageSplitTests.swift)
   
-### Using recursive, re-calculate total part, re-render prefix indicator
+## Using recursive, re-calculate total part, re-render prefix indicator
 
   - Try to estimate total partial before separate.
   - Separate sentences into words by remove whitespaces and new lines.
