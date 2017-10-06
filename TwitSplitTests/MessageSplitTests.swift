@@ -168,6 +168,18 @@ class MessageSplitTests: XCTestCase {
         //Then
         XCTAssertEqual(output, expected)
     }
+    
+    func testEdgeCases() {
+        //Give
+        let msgs = "abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^& abcdefghijilmnopqrstuvwxyz1234567890!@#$%^&22"
+        let expected: [String] = []
+        
+        //When
+        let output = Utils.split(msgs, limitCharacters: 50)
+        
+        //Then
+        XCTAssertEqual(output, expected)
+    }
 }
 
 

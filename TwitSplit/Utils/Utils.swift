@@ -45,12 +45,17 @@ class Utils {
         for i in 0..<estTotal {
             //Add indicator as suffix
             var partial = "\(i + 1)/\(estTotal) "
+            let indicatorLength = partial.characters.count
             var length = partial.characters.count
             
             for (index, item) in words.enumerated() {
-                if index <= breakAtIndex {
-                    continue
+                
+                if item.characters.count + indicatorLength > 50 {
+                    return ([], index)
                 }
+                
+                // Skip words that already joined into partial
+                if index <= breakAtIndex { continue }
                 
                 // Caculate string length (+ 1 because of whitespace) before joined into partial
                 length += item.characters.count + 1
