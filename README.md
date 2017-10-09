@@ -50,7 +50,13 @@ Let take a look on failure cases to know why regexes is wrong approach. [Checkou
 
 ### Time complexity
 
-In general, the time complexity is `O(n)`, within `n` is numbers of words.
+In general, the time complexity is `O(n2)`. Follow this formula to calculate `estTotal`
+
+```
+estTotal = inputMessage’s length / limit + 1
+```
+
+So, the `estTotal` changes while input message's length is changed, and the worst case scenario happens if `limit` equal to 1. Then we need to loop through `estTotal * inputMessage's length` times. 
 
 ```
 // Go through 0 to total partial
