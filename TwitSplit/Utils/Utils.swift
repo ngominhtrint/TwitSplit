@@ -58,7 +58,7 @@ class Utils {
                 // Skip words that already joined into partial
                 guard index > breakAtIndex else { continue }
                 
-                // Pre-caculate how much partial length (+ 1 because of 1 suffix whitespace per word) before joined into partial
+                // Pre-caculate partial length before joined (+ 1 because of a suffix whitespace per word)
                 length += item.count + 1
                 
                 // Break loop if length is over than limit, (+ 1 because the last whitespace before trimming)
